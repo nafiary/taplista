@@ -1,0 +1,56 @@
+\chapter{INSTALASI PERANGKAT LUNAK}
+
+\section*{Instalasi Pustaka Python} \label{install:pythonlibrary}
+	Dalam pengembangan sistem ini, digunakan berbagai pustaka pendukung. Pustaka pendukung yang digunakan merupakan pustaka untuk bahasa pemrograman Python. Berikut adalah daftar pustaka yang digunakan dan cara pemasangannya:
+    \begin{itemize}
+	 \item Python Pip\\
+		 \$ \texttt{sudo apt-get install python-pip}
+    \item Python Dev \\
+    	\$ \texttt{sudo apt-get install python-dev}
+    \item Setuptools \\
+    	\$ \texttt{sudo apt-get install python-setuptools}
+    \item MySQLd \\
+    	\$ \texttt{sudo apt-get install python-mysqldb}
+    \end{itemize}
+	
+\section*{Pemasangan kerangka kerja Flask}
+Dalam pengembangan sistem ini, digunakan Flask karena Flask merupakan kerangka kerja yang menggunakan bahasa pemrograman Python. Untuk memasang Flask, jalankan perintah \texttt{sudo pip3 install flask}.
+
+\section*{Pemasangan perangkat lunak Gunicorn}
+Dalam pengembangan sistem ini, digunakan Gunicorn untuk menangani servis dari halaman \textit{login}. Untuk memasang Gunicorn, jalankan perintah \texttt{sudo pip3 install gunicorn}.
+
+\section*{Pemasangan perangkat lunak Supervisor}
+Dalam pengembangan sistem ini, digunakan Supervisor supaya servis pada halaman \textit{login} dapat langsung berjalan ketika \textit{server} dinyalakan. Untuk memasang Supervisor, jalankan perintah \texttt{sudo apt-get install supervisor}.
+
+\section*{Pemasangan perangkat lunak Nginx}
+Dalam pengembangan sistem ini, digunakan Nginx sebagai web \textit{server} untuk halaman \textit{login}. Untuk memasang Nginx, jalankan perintah \texttt{sudo apt-get install nginx}.
+
+\section*{Instalasi Lingkungan Docker}
+Proses pemasangan Docker dpat dilakukan sesuai tahap berikut:
+\begin{itemize}
+	\item Menambahkan repository Docker\\
+	Langkah ini dilakukan untuk menambahkan \textit{repository} Docker ke dalam paket \texttt{apt} agar dapat di unduh oleh Ubuntu. Untuk melakukannya, jalankan perintah berikut:
+	\begin{tabbing}
+		\texttt{sudo apt-get -y install \char`\\} \\
+		\hspace{5 mm} \texttt{apt-transport-https \char`\\} \\
+		\hspace{5 mm} \texttt{ca-certificates \char`\\} \\
+		\hspace{5 mm} \texttt{curl} \\
+		\\
+		\texttt{curl -fsSL https://download.docker.com/linux/} \\
+		\hspace{7 mm} \texttt{ubuntu/gpg | sudo apt-key add -} \\
+		\\
+		\texttt{sudo add-apt-repository \char`\\} \\
+		\hspace{7 mm} \texttt{"deb [arch=amd64] https://download.docker.com/} \\
+		\hspace{9 mm} \texttt{linux/ubuntu \char`\\} \\
+		\hspace{7 mm} \texttt{\$ (lsb\_release -cs) \char`\\} \\
+		\hspace{7 mm} \texttt{stable"} \\
+		\\
+		\texttt{sudo apt-get update} \\
+	\end{tabbing}
+	
+	\item Mengunduh Docker \\
+	Docker dikembangkan dalam dua versi, yaitu CE (\textit{Community Edition}) dan EE (\textit{Enterprise Edition}). Dalam pengembangan sistem ini, digunakan Docker CE karena merupakan versi Docker yang gratis. Untuk mengunduh Docker CE, jalankan perintah \texttt{sudo apt-get -y install docker-ce}.
+	
+	\item Mencoba menjalankan Docker \\
+	Untuk melakukan tes apakah Docker sudah terpasang dengan benar, gunakan perintah \texttt{sudo docker run hello-world}.
+\end{itemize}

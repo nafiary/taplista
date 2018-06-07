@@ -1,0 +1,279 @@
+\chapter{PENGUJIAN DAN EVALUASI}
+	Pada bab ini akan dibahas uji coba dan evaluasi dari sistem yang telah dibuat. Sistem akan diuji coba fungsionalitas dan performanya dengan menjalankan skenario uji coba yang sudah ditentukan. Uji coba dilakukan untuk mengetahui hasil dari sistem ini sehingga dapat menjawab rumusan masalah pada tugas akhir ini.    
+	
+\section{Lingkungan Uji Coba}
+	Lingkungan pengujian menggunakan komponen-komponen yang terdiri dari: satu \textit{server publisher}, satu \textit{server publish-subscribe}, satu \textit{server} aplikasi dan API, satu \textit{server database}, dan satu komputer penguji. Pengujian dilakukan di Laboratoriom Arsitektur dan Jaringan Komputer Departemen Informatika ITS. \\
+    \indent Spesifikasi untuk setiap komponen yang digunakan ditunjukkan pada Tabel \ref{spesifikasipublisher} untuk \textit{publisher server}, Tabel \ref{spesifikasipubsub} untuk \textit{publish-subscribe server}, Tabel \ref{spekwebserver} untuk \textit{web server} dan API, Tabel \ref{spekdbserver} untuk \textit{database server}, dan Tabel \ref{spesifikasikomputerpenguji} untuk komputer penguji.
+\pagebreak
+\begin{enumerate}
+	\item \textbf{\textit{Publisher Server}}
+	\begin{longtable}{|l|l|}
+		\caption{\textit{Server} Untuk \textit{Publisher}}
+		\label{spesifikasipublisher} \\
+		\hline
+		\textbf{Perangkat Keras}      & \begin{tabular}[c]{@{}l@{}} Processor Intel(R) Core(TM) \\ i5-2120 CPU @ 3.30GHz\end{tabular} \\ \cline{2-2} 
+		& RAM 8GB	\\ \cline{2-2} 
+		& Hard disk 500GB \\ \hline
+		\textbf{Perangkat Lunak}      & Ubuntu 16.04 64 bit \\ \cline{2-2} 
+		& Nagios \\ \hline
+		\textbf{Konfigurasi Jaringan} & IP address : 10.151.36.97 \\ \cline{2-2} 
+		& Netmask : 255.255.255.0 \\ \cline{2-2} 
+		& Gateway : 10.151.36.1 \\ \hline
+	\end{longtable}
+	
+	\item \textbf{\textit{Publish-Subscribe Server}}
+	\begin{longtable}{|l|l|}
+		\caption{\textit{Server} Untuk \textit{Publish-Subscribe}}
+		\label{spesifikasipubsub} \\
+		\hline
+		\textbf{Perangkat Keras}      & \begin{tabular}[c]{@{}l@{}} Processor Intel(R) Core(TM) \\ i5-2120 CPU @ 3.30GHz\end{tabular} \\ \cline{2-2} 
+		& RAM 8GB	\\ \cline{2-2} 
+		& Hard disk 500GB \\ \hline
+		\textbf{Perangkat Lunak}      & Ubuntu 16.04 64 bit \\ \cline{2-2} 
+		& RabbitMQ \\ \hline
+		\textbf{Konfigurasi Jaringan} & IP address : 10.151.36.70 \\ \cline{2-2} 
+		& Netmask : 255.255.255.0 \\ \cline{2-2} 
+		& Gateway : 10.151.36.1 \\ \hline
+	\end{longtable}
+
+	\item \textbf{\textit{Web Server} dan API}
+	\begin{longtable}{|l|l|}
+		\caption{\textit{Server} Untuk Aplikasi dan API}
+		\label{spekwebserver} \\
+		\hline
+		\textbf{Perangkat Keras}      & \begin{tabular}[c]{@{}l@{}} Processor Intel(R) Core(TM) \\ i5-2120 CPU @ 3.30GHz\end{tabular} \\ \cline{2-2} 
+		& RAM 8GB	\\ \cline{2-2} 
+		& Hard disk 500GB \\ \hline
+		\textbf{Perangkat Lunak}      & Ubuntu 14.04 64 bit \\ \cline{2-2} 
+		& RabbitMQ \\ \cline{2-2}
+		& Flask \\ \cline{2-2}
+		& NodeJS \\ \hline
+		\textbf{Konfigurasi Jaringan} & IP address : 10.151.36.33 \\ \cline{2-2} 
+		& Netmask : 255.255.255.0 \\ \cline{2-2} 
+		& Gateway : 10.151.36.1 \\ \hline
+	\end{longtable}
+
+	\item \textbf{\textit{Database Server}}
+	\begin{longtable}{|l|l|}
+		\caption{\textit{Server} Untuk \textit{Database}}
+		\label{spekdbserver} \\
+		\hline
+		\textbf{Perangkat Keras}      & \begin{tabular}[c]{@{}l@{}} Processor Intel(R) Core(TM) \\ i5-2120 CPU @ 3.30GHz\end{tabular} \\ \cline{2-2} 
+		& RAM 8GB	\\ \cline{2-2} 
+		& Hard disk 500GB \\ \hline
+		\textbf{Perangkat Lunak}      & Ubuntu 16.04 64 bit \\ \cline{2-2} 
+		& MySQL Server \\ \hline
+		\textbf{Konfigurasi Jaringan} & IP address : 10.151.36.101 \\ \cline{2-2} 
+		& Netmask : 255.255.255.0 \\ \cline{2-2} 
+		& Gateway : 10.151.36.1 \\ \hline
+	\end{longtable}
+		
+	\item \textbf{Komputer Penguji}
+	\begin{longtable}{|l|l|}
+		\caption{Komputer Penguji}
+		\label{spesifikasikomputerpenguji} \\
+		\hline
+		\textbf{Perangkat Keras}      & \begin{tabular}[c]{@{}l@{}} Processor Intel(R) Core(TM) \\ i5-2120 CPU @ 3.30GHz\end{tabular} \\ \cline{2-2} 
+		& RAM 8GB	\\ \cline{2-2} 
+		& Hard disk 500GB \\ \hline
+		\textbf{Perangkat Lunak}      & Ubuntu 14.04 64 bit \\ \cline{2-2} 
+		& Google Chrome \\ \hline
+		\textbf{Konfigurasi Jaringan} & IP address : 10.151.36.33 \\ \cline{2-2} 
+		& Netmask : 255.255.255.0 \\ \cline{2-2} 
+		& Gateway : 10.151.36.1 \\ \hline
+	\end{longtable}
+
+\end{enumerate}
+			
+   
+\section{Skenario Uji Coba} \label{skenarioujicoba}
+	Uji coba akan dilakukan untuk mengetahui keberhasilan sistem yang telah dibangun. Skenario pengujian dibedakan menjadi 2 bagian, yaitu:
+    \begin{itemize}
+    \item \textbf{Uji Fungsionalitas} \\
+    	Pengujian ini didasarkan pada fungsionalitas yang disajikan sistem.
+    \item \textbf{Uji Performa} \\
+    	Pengujian ini untuk menguji ketahanan sistem terhadap sejumlah permintaan ke aplikasi secara bersamaan.
+    \end{itemize}
+    
+\subsection{Skenario Uji Coba Fungsionalitas}
+Uji coba fungsionalitas dilakukan dengan cara menjalankan sistem yang telah dibangun dan melakukan pengujian terhadap fitur yang telah dibuat. Uji coba fungsionalitas akan berfungsi untuk memastikan sistem sudah memenuhi kebutuhan.
+
+\subsubsection{Uji Pengguna Dapat Melihat Data Perangkat} \label{pertama}
+Pengujian ini dilakukan untuk mengetahui apakah pengguna dapat melihat data perangkat yang telah terdaftar di sistem.
+
+Pengujian dilakukan setelah pengguna melakukan \textit{login}. Uji fungsionalitas pengguna dapat melihat data perangkat yang telah terdaftar di sistem dijelaskan pada Tabel \ref{lihatperangkat}.
+\begin{longtable}{|p{0.05\textwidth}|p{0.38\textwidth}|p{0.39\textwidth}|}					\caption{Skenario Uji Pengguna Dapat Melihat Data Perangkat} \label{lihatperangkat} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endfirsthead
+	\caption[]{Skenario Uji Melihat Data Perangkat} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endhead
+	\endfoot
+	\endlastfoot
+	
+	1 & Pengguna menekan tombol menu 'Device Management'. & Pengguna dapat melihat perangkat apa saja yang terdaftar di sistem.\\ \hline
+\end{longtable}
+
+\paragraph{Uji Pengguna Dapat Melihat Detail Data Perangkat} \label{kedua}
+Pengujian ini dilakukan untuk mengetahui apakah pengguna dapat melihat rincian data dari suatu perangkat.
+
+Uji fungsionalitas pengguna dapat melihat detail data perangkat yang telah terdaftar di sistem dijelaskan pada Tabel \ref{lihatdetilperangkat}.
+
+\begin{longtable}{|p{0.05\textwidth}|p{0.38\textwidth}|p{0.39\textwidth}|}					\caption{Skenario Uji Pengguna Dapat Melihat Detail Data Perangkat} \label{lihatdetilperangkat} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endfirsthead
+	\caption[]{Skenario Uji Melihat Detail Data Perangkat} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endhead
+	\endfoot
+	\endlastfoot
+	
+	1 & Pengguna menekan tombol menu 'Info' yang ada pada tiap perangkat. & Pengguna dapat melihat detail data dari suatu perangkat.\\ \hline
+\end{longtable}
+
+\paragraph{Uji Pengguna Dapat Mengubah Data Perangkat} \label{ketiga}
+Pengujian ini dilakukan untuk mengetahui apakah pengguna dapat mengubah data dari suatu perangkat.
+
+Uji fungsionalitas pengguna dapat mengubah data perangkat dijelaskan pada Tabel \ref{ubahdata}
+
+\begin{longtable}{|p{0.05\textwidth}|p{0.38\textwidth}|p{0.39\textwidth}|}					\caption{Skenario Uji Pengguna Dapat Mengubah Data Perangkat} \label{ubahdata} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endfirsthead
+	\caption[]{Skenario Uji Pengguna Dapat Mengubah Data Perangkat} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endhead
+	\endfoot
+	\endlastfoot
+	
+	1 & Pengguna menekan tombol menu 'Ubah' yang ada pada tiap perangkat. & Sistem menampilkan \textit{form} yang sudah berisi detail data dari perangkat.\\ \hline
+	2 & Pengguna mengubah data perangkat sesuai kebutuhan. & Sistem menampilkan data yang sudah diubah oleh pengguna sebelumnya menggantikan data yang lama. \\ \hline
+\end{longtable}
+
+\paragraph{Uji Pengguna Dapat Menghapus Data Perangkat} \label{keempat}
+Pengujian ini dilakukan untuk mengetahui apakah pengguna dapat menghapus data perangkat dari sistem.
+
+Uji fungsionalitas pengguna dapat menghapus data perangkat dari sistem dijelaskan pada Tabel \ref{hapusdata}.
+
+\begin{longtable}{|p{0.05\textwidth}|p{0.38\textwidth}|p{0.39\textwidth}|}					\caption{Skenario Uji Pengguna Dapat Menghapus Data Perangkat} \label{hapusdata} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endfirsthead
+	\caption[]{Skenario Uji Menghapus Data Perangkat} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endhead
+	\endfoot
+	\endlastfoot
+	
+	1 & Pengguna menekan tombol menu 'Hapus' yang tersedia pada tiap perangkat. & Data perangkat berhasil dihapus.\\ \hline
+\end{longtable}
+
+\subsubsection{Uji Pengguna Dapat Melakukan \textit{Subscribe} pada Perangkat} \label{kelima}
+Pengujian ini dilakukan untuk mengetahui apakah pengguna dapat melakukan \textit{subscribe} pada perangkat yang dipilih. 
+
+Uji fungsionalitas pengguna dapat melakukan \textit{subscribe} pada perangkat yang dipilih dijelaskan pada Tabel \ref{subscribe}.
+
+\begin{longtable}{|p{0.05\textwidth}|p{0.38\textwidth}|p{0.39\textwidth}|}					\caption{Skenario Uji Pengguna Dapat Melakukan \textit{Subscribe} pada Perangkat} \label{subscribe} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endfirsthead
+	\caption[]{Skenario Uji Melakukan \textit{Subscribe} pada Perangkat} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endhead
+	\endfoot
+	\endlastfoot
+	
+	1 & Pengguna menekan tombol 'Subscribe' yang tersedia pada tiap perangkat. & Pengguna berhasil melakukan \textit{subscribe} pada perangkat yang telah dipilih ditandai dengan berubahnya tombol 'Subscribe' menjadi 'Unsubscribe'.\\ \hline
+\end{longtable}
+
+\subsubsection{Uji Pengguna Dapat Menghentikan \textit{Subscribe} (\textit{Unsubscribe}) pada Perangkat} \label{keenam}
+Pengujian ini dilakukan untuk mengetahui apakah pengguna dapat berhenti langganan dari perangkat yang dipilih sebelumnya. 
+
+Uji fungsionalitas pengguna dapat melakukan \textit{unsubscribe} pada perangkat yang dipilih sebelumnya dijelaskan pada Tabel \ref{unsubscribe}.
+
+\begin{longtable}{|p{0.05\textwidth}|p{0.38\textwidth}|p{0.39\textwidth}|}					\caption{Skenario Uji Pengguna Dapat Menghentikan \textit{Subscribe} (\textit{Unsubscribe}) pada Perangkat} \label{usubscribe} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endfirsthead
+	\caption[]{Skenario Uji Menghentikan \textit{Subscribe} (\textit{Unsubscribe}) pada Perangkat} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endhead
+	\endfoot
+	\endlastfoot
+	
+	1 & Pengguna menekan tombol 'Unsubscribe' yang tersedia pada tiap perangkat yang sebelumnya di-\textit{subscribe}. & Pengguna berhasil melakukan \textit{unsubscribe} pada perangkat yang ditandai dengan berubahnya tombol 'Unsubscribe' menjadi 'Subscribe' kembali.\\ \hline
+\end{longtable}
+
+\subsubsection{Uji Pengguna Dapat Melakukan \textit{Monitoring} atau Pemantauan pada Perangkat yang Telah Di-\textit{Subscribe}} \label{ketujuh}
+Pengujian ini dilakukan untuk mengetahui apakah pengguna dapat memantau perangkat yang di-\textit{subscribe} sebelumnya. 
+
+Uji fungsionalitas pengguna dapat melakukan \textit{monitoring} atau pemantauan pada perangkat yang di-\textit{subscribe} sebelumnya dijelaskan pada Tabel \ref{monitor}.
+
+\begin{longtable}{|p{0.05\textwidth}|p{0.38\textwidth}|p{0.39\textwidth}|}					\caption{Skenario Uji Pengguna Dapat Melakukan \textit{Monitoring} atau Pemantauan pada Perangkat yang Telah Di-\textit{Subscribe}} \label{monitor} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endfirsthead
+	\caption[]{Skenario Uji Melakukan \textit{Monitoring} atau Pemantauan pada Perangkat yang Telah Di-\textit{Subscribe}} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil Harapan} \\ \hline
+	\endhead
+	\endfoot
+	\endlastfoot
+	
+	1 & Pengguna menekan tombol menu 'Monitor' yang tersedia di sistem. & Pengguna dapat melihat kondisi perangkat yang di-\textit{subscribe}.\\ \hline
+\end{longtable}
+
+\subsection{Skenario Uji Coba Performa}
+Uji performa dilakukan dengan dua skenario, yaitu uji performa REST API dan uji performa \textit{publish-subscribe}. Uji coba REST API dilakukan dengan menggunakan satu buah komputer untuk melakukan akses secara bersamaan ke REST API menggunakan bantuan aplikasi JMeter, sebuah aplikasi pengujian untuk menganalisa dan menghitung performa dari suatu servis.
+
+Sedangkan untuk uji performa \textit{publish-subscribe} dilakukan dengan cara menghitung waktu pengiriman data. Data dikirim oleh publisher yang berada pada server dengan alamat IP 10.151.36.97 menuju konsumen yang berada pada alamat IP 10.151.36.33.
+
+\subsubsection{Uji Performa REST API}
+Pengujian dilakukan menggunakan bantuan aplikasi JMeter untuk mengukur jumlah waktu yang diperlukan oleh REST API untuk menyelesaikan \textit{request} dari komputer penguji.
+
+\subsubsection{Uji Performa \textit{Publish-Subscribe}}
+Pengujian dilakukan dengan mengukur jumlah waktu yang diperlukan \textit{publisher} dalam mengirim data dan diterima oleh \textit{subscriber}.
+
+    
+\section{Hasil Uji Coba dan Evaluasi}
+Berikut dijelaskan hasil uji coba dan evaluasi berdasarkan skenario yang telah dijelaskan pada subbab \ref{skenarioujicoba}.
+    
+\subsection{Uji Fungsionalitas}
+Berikut dijelaskan hasil pengujian fungsionalitas pada sistem yang dibangun.
+
+\subsubsection{Uji Pengguna Dapat Melihat Data Perangkat}
+Pengujian dilakukan sesuai dengan skenario yang dijelaskan pada subbab \ref{pertama} dan pada Tabel \ref{lihatperangkat}. Hasil pengujian pengguna melihat data perangkat yang telah terdaftar di sistem dapat dilihat pada Tabel \ref{hasilpertama}
+
+\begin{longtable}{|p{0.05\textwidth}|p{0.55\textwidth}|p{0.22\textwidth}|}					\caption{Hasil Uji Coba \textit{Client} dapat Mengakses Internet} \label{hasilpertama} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil} \\ \hline
+	\endfirsthead
+	\caption[]{Hasil Uji Pengguna Melihat Data Perangkat} \\
+	\hline
+	\textbf{No} & \textbf{Uji Coba} & \textbf{Hasil} \\ \hline
+	\endhead
+	\endfoot
+	\endlastfoot
+	
+	1 & Pengguna menekan tombol menu 'Device Management'. & Data berhasil ditampilkan. \\ \hline
+\end{longtable}
+
+Sesuai dengan skenario uji coba  yang diberikan pada Tabel \ref{lihatperangkat}, hasil uji coba menunjukkan skenario berhasil ditangani.
+
+\subsection{Hasil Uji Performa}
+Seperti yang sudah dijelaskan pada subbab \ref{skenarioujicoba} pengujian performa dilakukan dengan menggunakan sebuah komputer yang berperan sebagai klien untuk melakukan \textit{monitoring} terhadap perangkat (\textit{server}). 
+
+\subsubsection{Hasil Uji Coba Performa pada REST API}
+
+
+\subsubsection{Hasil Uji Coba Performa pada \textit{Publish-Subscribe}}
+
+

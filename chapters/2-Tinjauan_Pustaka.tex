@@ -1,0 +1,51 @@
+\chapter{DASAR TEORI}
+Pada bab ini akan dijelaskan mengenai dasar teori yang menjadi dasar pengerjaan Tugas Akhir ini.
+
+
+\section{Deskripsi Umum}
+Pada subbab ini akan dijelaskan mengenai deskripsi-deskripsi umum yang terdapat pada Tugas Akhir ini.
+
+\subsection{SNMP}
+SNMP (\textit{Simple Network Management Protocol}) adalah metode “tanpa agen” untuk memonitor perangkat dan server jaringan. Ribuan perangkat jaringan dan sistem operasi yang berbeda dari vendor yang berbeda mendukung SNMP untuk menyampaikan informasi penting yang berhubungan dengan penggunaan, status layanan, dan lainnya.\\
+SNMP merupakan pembaharuan dari versi sebelumnya, yakni SGMP (\textit{Simple Gateway Management Protocol}). Protokol ini direncanakan melakukan pertukaran dengan arsitektur \textit{Common Management Information Service/Protocol} (CMIS / CMIP) berdasarkan solusi.
+
+SNMP terdiri dari model manajer/agen yang di dalamnya terdapat manajer SNMP, agen MP dan database informasi manajemen, perangkat SNMP yang dikelola dan protokol jaringan. Manajer SNMP menyediakan antarmuka antara manajer jaringan manusia dan sistem manajemen. Agen SNMP menyediakan antarmuka antara manajer dan perangkat fisik yang sedang dikelola.
+
+
+\subsection{\textit{Publish-Subscribe}}
+Secara umum, maksud dari \textit{publish-subscribe} adalah susunan dari sekumpulan node yang didistribusikan melalui jaringan komunikasi. Klien dari sistem ini dibagi menjadi dua peran yaitu \textit{publisher} dan \textit{subscriber}.
+
+\textit{Publisher} adalah yang penyedia informasi dan memberikannya kepada yang meminta informasi tersebut. Sedangkan \textit{subscriber} bertindak sebagai konsumen informasi tersebut. Dua klien ini tidak diharuskan untuk berkomunikasi secara langsung di antara mereka sendiri yang namun agak terpisah: interaksi terjadi melalui nodes sistem \textit{publish-subscribe}, yang mengkoordinasikan diri mereka untuk mengarahkan informasi dari penerbit ke pelanggan. Pengunaan \textit{publisher} dan \textit{subscriber} ini dapat memungkinkan skalabilitas yang lebih besar dan topologi jaringan yang lebih dinamis.
+
+Terdapat dua jenis \textit{publish-subscribe}, yaitu \textit{topic based} \textit{publish-subscribe} dan \textit{content based} \textit{publish-subscribe}. \textit{Topic based} \textit{publish-subscribe} merupakan pola pengiriman pesan \textit{publish-subscribe} dimana penyedia informasi menyampaikan pesan ke konsumen berdasarkan topik yang dipilihnya. \textit{Content based} \textit{publish-subscribe} merupakan pola pengiriman pesan \textit{publish-subscribe} dimana penyedia informasi menyampaikan pesan ke konsumen berdasarkan isi dari pesan yang ada. Pada umumnya pola pengiriman pesan \textit{publish-subscribe} merupakan \textit{topic based}.
+
+
+\subsection{\textit{Websocket}}
+\textit{Websocket} merupakan protokol komunikasi yang memungkinkan komunikasi dua arah antara \textit{web client} dengan \textit{server}. Penerapan komunikasi dua arah ini dapat digambarkan oleh pengguna telepon. Kedua orang yang sedang bertelepon dapat berbicara dan mendengarkan secara bersamaan dan \textit{real-time}. Protokol \textit{websocket} memungkinkan komunikasi dua arah antara klien dengan \textit{server} secara \textit{real-time}.
+
+Pada umumnya \textit{web client} mendapatkan satu kali tanggapan dari \textit{server} untuk setiap satu permintaan. Alur tersebut kurang tepat apabila digunakan untuk menerapkan pola pengiriman pesan \textit{publish-subscribe} dimana \textit{subscriber} biasanya akan menunggu terus menerus terhadap pesan yang dikirimkan oleh \textit{publisher}. Sedangkan \textit{publisher} mungkin saja mengirimkan pesan lagi setelah 5 menit. Maka dari itu \textit{websocket} digunakan untuk menampilkan secara \textit{real-time} pesan yang diperoleh dari \textit{publisher} walaupun harus menunggu dalam jangka waktu yang tidak pasti.
+
+Untuk membuat koneksi \textit{websocket}, klien harus mengirimkan \textit{request} HTTP kepada \textit{server}. Setelah itu protokol akan diubah menjadi protokol \textit{Websocket}, lalu \textit{server} akan mengenali tipe \textit{request} berdasarkan \textit{header} pada HTTP. Protokol akan diupgrade menjadi \textit{Websocket} apabila diminta. Kemudian klien dan server akan memulai komunikasi \textit{full-duplex}, yang berarti klien dan server dapat bertukar data kapanpun sampai salah satu dari klien atau server menutup koneksi tersebut.
+
+
+\subsection{Rabbitmq}
+Rabbitmq merupakan perantara (broker) pada pertukaran pesan. Rabbitmq juga biasa disebut \textit{message-oriented middleware}. Rabbitmq mendukung pola pengiriman pesan \textit{publish-subscribe}.
+
+Pada arsitektur pola pengiriman pesan \textit{publish-subscribe} yang terdapat di rabbitmq akan sering ditemui istilah-istilah seperti \textit{exchange} dan \textit{queue}. \textit{Exchange} dapat diartikan sebagai persimpangan, sedangkan \textit{queue} dapat diartikan sebagai tempat penyimpanan. Rabbitmq menggunakan istilah \textit{producer} untuk pihak yang membuat pesan untuk nantinya dikirim ke broker dan \textit{consumer} untuk pihak yang nantinya akan menerima pesan dari broker yang dibuat oleh \textit{producer}. \textit{Producer} pada pola pengiriman pesan \textit{publish-subscribe} dikenal dengan istilah \textit{publisher} sedangkan \textit{consumer} dikenal dengan istilah \textit{subscriber}.
+
+Pada arsitektur pola pengiriman pesan \textit{publish-subscribe} pesan yang dibuat oleh \textit{text}publisher mungkin saja dikonsumsi oleh beberapa \textit{subscriber}. \textit{Publisher} nantinya akan mengirim pesan ke suatu \textit{exchange} yang berada pada broker, akan tetapi \textit{exchange} tidak dapat menyimpan pesan. Ketika suatu \textit{exchange} yang dikirimi pesan tidak memiliki \textit{queue} yang tersambung, maka pesan tersebut akan hilang. Pada kasus ini masing-masing \textit{subscriber} akan membuat \textit{queue} yang berbeda untuk menyimpan pesan yang dibuat oleh \textit{publisher}. Oleh rabbitmq pesan yang sudah pernah dipakai (\textit{consume}) akan langsung dihapus dari \textit{queue}.
+
+\subsection{Nagios}
+Nagios adalah perangkat lunak open source yang menyediakan alat pemantauan yang sempurna yang dapat membantu untuk memantau seluruh protokol yang aktif dan perangkat jaringan yang terhubung dengan topologi. Nagios juga merupakan sistem pemantauan yang paling yang paling populer yang cocok dengan hampir semua distribusi linux. Aplikasi ini memiliki banyak \textit{plugin} tambahan yang dikembangkan oleh pengguna maupun yang terdapat langsung pada awal pengaturan. Peralatan pemantauan yang berbasis Nagios juga tersedia, seperti sensor yang dirancang untuk beroperasi bersama Nagios. Karena fleksibilitas dari rancangan perangkat lunak yang menggunakan arsitektur \textit{plugin}, layanan pengecekan untuk aplikasi yang pustakanya sudah ditentukan dapat digunakan. Di dalam Nagios terdapat beberapa \textit{plugin} lain, seperti script tambahan yang dapat dikostumisasi dan dapat digunakan pada Nagios. Nagios juga mampu untuk menyediakan grafik yang komperhensif dan bersifat \textit{real-time} dan analisis tren.
+
+
+\subsection{Raspberry Pi}
+Raspberry Pi adalah salah satu jenis \textit{Single-Board Computer} (SBC) yang bisa digunakan dalam sistem pemantauan. Raspberry Pi merupakan SBC yang memiliki \textit{low-power} dengan ukuran sebesar kartu kredit yang dirilis pada tahun 2012. Alat ini bisa dibilang merupakan alat yang paling populer yang dikembangkan oleh Universitas Cambridge UK untuk kepentingan pendidikan komputasi.
+
+Raspberry Pi ini memiliki RAM sebesar $1$ GB, 900 Mhz \textit{quad-core} ARM Cortex A7 CPU, 10/100 Ethernet, dan dihargai sebesar \textdollar35.00. Alat ini dapat digunakan di sistem operasi Linux dan Windows. Selain itu, alat ini banyak diadaptasi untuk berbagai macam aplikasi seperti sensor jaringan nirkabel, robotika, dan UAV.
+
+
+\subsection{Telegram}
+Telegram adalah aplikasi untuk \textit{chatting} yang fokus pada kecepatan dan keamanan. Aplikasi ini tidak berbayar atau gratis. Kelebihan dari Telegram adalah kita dapat membuka akun kita di banyak perangkat secara bersamaan karena pesan akan disinkronisasi dengan baik di sejumlah ponsel, tablet, atau komputer kita.
+
+Telegram juga memiliki API yang memperbolehkan pengguna untuk membuat klien Telegram yang disesuaikan dengan pengguna tersebut. API ini gratis untuk siapa saja yang ingin membuat aplikasi Telegram di \textit{platform} ini. Telegram sudah menyediakan \textit{open source code} untuk aplikasi Telegram yang sudah ada agar pengguna bisa melihat bagaimana segala sesuatunya bekerja di sini.

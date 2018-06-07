@@ -1,0 +1,17 @@
+\chapter{PENUTUP}
+    Bab ini membahas kesimpulan yang dapat diambil dari tujuan pembuatan sistem dan hubungannya dengan hasil uji coba dan evaluasi yang telah dilakukan. Selain itu, terdapat beberapa saran yang bisa dijadikan acuan untuk melakukan pengembangan dan penelitian lebih lanjut.
+        
+\section{Kesimpulan}
+Dari proses perancangan, implementasi dan pengujian terhadap sistem, dapat diambil beberapa kesimpulan berikut:
+\begin{enumerate}
+\item Sistem dapat mengarahkan \textit{client} ke halaman \textit{login} dari sistem.
+\item Sistem dapat membuatkan kontainer \textit{docker} yang berisi \textit{mitmproxy} secara otomatis ketika terdapat \textit{client} yang berhasil \textit{login} ke dalam sistem.
+\item Sistem dapat mengarahkan \textit{traffic} dari \textit{client} ke kontainer \textit{docker} yang sudah dibuat dan digunakan sebagai internet \textit{access management} bagi \textit{client} dan memperbolehkan atau mengijinkan \textit{client} tersebut untuk mengakses internet. 
+\end{enumerate}
+
+\section{Saran}
+Berikut beberapa saran yang diberikan untuk pengembangan lebih lanjut:
+\begin{enumerate}
+\item Sistem dapat dikembangkan dengan menggunakan \textit{server} lebih dari satu untuk meringankan beban kerja dari \textit{server} itu sendiri.
+\item Sistem dapat dikembangkan dengan menentukan beban dari setiap \textit{server}, dengan menambahkan kriteria-kriteria yang sesuai dengan lingkungan sistem yang ada, seperti jarak antara \textit{docker host} dengan \textit{middleware} atau kecepatan bandwith dari setiap \textit{docker host} merupakan kriteria yang baik. 
+\end{enumerate}

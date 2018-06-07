@@ -1,0 +1,75 @@
+\select@language {bahasa}
+\contentsline {chapter}{ABSTRAK}{vii}{Doc-Start}
+\contentsline {chapter}{ABSTRACT}{x}{Doc-Start}
+\contentsline {chapter}{Kata Pengantar}{xiii}{chapter*.1}
+\contentsline {chapter}{DAFTAR ISI}{xv}{chapter*.3}
+\contentsline {chapter}{DAFTAR TABEL}{xix}{chapter*.4}
+\contentsline {chapter}{DAFTAR GAMBAR}{xxi}{chapter*.5}
+\contentsline {chapter}{DAFTAR KODE SUMBER}{xxiii}{chapter*.6}
+\contentsline {chapter}{\numberline {I}PENDAHULUAN}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Latar Belakang}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Rumusan Masalah}{2}{section.1.2}
+\contentsline {section}{\numberline {1.3}Batasan Masalah}{3}{section.1.3}
+\contentsline {section}{\numberline {1.4}Tujuan}{3}{section.1.4}
+\contentsline {section}{\numberline {1.5}Manfaat}{3}{section.1.5}
+\contentsline {section}{\numberline {1.6}Metodologi}{4}{section.1.6}
+\contentsline {subsection}{\numberline {1.6.1}Penyusunan Proposal Tugas Akhir}{4}{subsection.1.6.1}
+\contentsline {subsection}{\numberline {1.6.2}Studi literatur}{5}{subsection.1.6.2}
+\contentsline {subsection}{\numberline {1.6.3}Desain dan Perancangan Sistem}{5}{subsection.1.6.3}
+\contentsline {subsection}{\numberline {1.6.4}Implementasi Sistem}{5}{subsection.1.6.4}
+\contentsline {subsection}{\numberline {1.6.5}Uji Coba dan Evaluasi}{6}{subsection.1.6.5}
+\contentsline {subsection}{\numberline {1.6.6}Penyusunan Buku Tugas Akhir}{6}{subsection.1.6.6}
+\contentsline {section}{\numberline {1.7}Sistematika Penulisan}{6}{section.1.7}
+\contentsline {chapter}{\numberline {II}DASAR TEORI}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Deskripsi Umum}{9}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}SNMP}{9}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}\textit {Publish-Subscribe}}{9}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}\textit {Websocket}}{10}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Rabbitmq}{11}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.5}Nagios}{12}{subsection.2.1.5}
+\contentsline {subsection}{\numberline {2.1.6}Raspberry Pi}{13}{subsection.2.1.6}
+\contentsline {subsection}{\numberline {2.1.7}Telegram}{13}{subsection.2.1.7}
+\contentsline {chapter}{\numberline {III}DESAIN DAN PERANCANGAN SISTEM}{15}{chapter.3}
+\contentsline {section}{\numberline {3.1}Deskripsi Umum Sistem}{15}{section.3.1}
+\contentsline {section}{\numberline {3.2}Arsitektur Sistem}{16}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Desain Umum Sistem}{16}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Desain \textit {Publisher Server}}{17}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Desain \textit {Publish-Subscribe Server}}{18}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Desain Webserver}{19}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Desain \textit {Database Server}}{20}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Desain REST API}{22}{subsection.3.2.6}
+\contentsline {chapter}{\numberline {IV}IMPLEMENTASI}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Lingkungan Implementasi}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}Implementasi \textit {Publisher Server}}{23}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Instalasi Nagios pada \textit {Server}}{24}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}\textit {Script} NRPE untuk Pengambilan Data}{24}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Implementasi \textit {Publish-Subscribe Server}}{24}{section.4.3}
+\contentsline {section}{\numberline {4.4}Implementasi \textit {Webserver}}{25}{section.4.4}
+\contentsline {section}{\numberline {4.5}Implementasi REST API}{27}{section.4.5}
+\contentsline {chapter}{\numberline {V}PENGUJIAN DAN EVALUASI}{33}{chapter.5}
+\contentsline {section}{\numberline {5.1}Lingkungan Uji Coba}{33}{section.5.1}
+\contentsline {section}{\numberline {5.2}Skenario Uji Coba}{36}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Skenario Uji Coba Fungsionalitas}{36}{subsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.1.1}Uji Pengguna Dapat Melihat Data Perangkat}{36}{subsubsection.5.2.1.1}
+\contentsline {paragraph}{\numberline {5.2.1.1.1}Uji Pengguna Dapat Melihat Detail Data Perangkat}{37}{paragraph.5.2.1.1.1}
+\contentsline {paragraph}{\numberline {5.2.1.1.2}Uji Pengguna Dapat Mengubah Data Perangkat}{37}{paragraph.5.2.1.1.2}
+\contentsline {paragraph}{\numberline {5.2.1.1.3}Uji Pengguna Dapat Menghapus Data Perangkat}{38}{paragraph.5.2.1.1.3}
+\contentsline {subsubsection}{\numberline {5.2.1.2}Uji Pengguna Dapat Melakukan \textit {Subscribe} pada Perangkat}{38}{subsubsection.5.2.1.2}
+\contentsline {subsubsection}{\numberline {5.2.1.3}Uji Pengguna Dapat Menghentikan \textit {Subscribe} (\textit {Unsubscribe}) pada Perangkat}{39}{subsubsection.5.2.1.3}
+\contentsline {subsubsection}{\numberline {5.2.1.4}Uji Pengguna Dapat Melakukan \textit {Monitoring} atau Pemantauan pada Perangkat yang Telah Di-\textit {Subscribe}}{40}{subsubsection.5.2.1.4}
+\contentsline {subsection}{\numberline {5.2.2}Skenario Uji Coba Performa}{40}{subsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.2.1}Uji Performa REST API}{41}{subsubsection.5.2.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2.2}Uji Performa \textit {Publish-Subscribe}}{41}{subsubsection.5.2.2.2}
+\contentsline {section}{\numberline {5.3}Hasil Uji Coba dan Evaluasi}{41}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Uji Fungsionalitas}{41}{subsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.1.1}Uji Pengguna Dapat Melihat Data Perangkat}{41}{subsubsection.5.3.1.1}
+\contentsline {subsection}{\numberline {5.3.2}Hasil Uji Performa}{42}{subsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.2.1}Hasil Uji Coba Performa pada REST API}{42}{subsubsection.5.3.2.1}
+\contentsline {subsubsection}{\numberline {5.3.2.2}Hasil Uji Coba Performa pada \textit {Publish-Subscribe}}{42}{subsubsection.5.3.2.2}
+\contentsline {chapter}{\numberline {VI}PENUTUP}{43}{chapter.6}
+\contentsline {section}{\numberline {6.1}Kesimpulan}{43}{section.6.1}
+\contentsline {section}{\numberline {6.2}Saran}{43}{section.6.2}
+\contentsline {chapter}{DAFTAR PUSTAKA}{45}{chapter*.12}
+\contentsline {chapter}{\numberline {A}INSTALASI PERANGKAT LUNAK}{47}{appendix.A}
+\contentsline {chapter}{\numberline {B}Konfigurasi}{51}{appendix.B}
+\contentsline {chapter}{BIODATA PENULIS}{55}{appendix*.13}

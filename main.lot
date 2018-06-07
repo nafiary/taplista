@@ -1,0 +1,28 @@
+\select@language {bahasa}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Daftar Endpoint pada REST API\relax }}{28}{table.4.1}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Daftar Endpoint pada REST API\relax }}{29}{table.4.1}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Daftar Endpoint pada REST API\relax }}{30}{table.4.1}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Daftar Endpoint pada REST API\relax }}{31}{table.4.1}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces \textit {Server} Untuk \textit {Publisher}\relax }}{34}{table.5.1}
+\contentsline {table}{\numberline {5.2}{\ignorespaces \textit {Server} Untuk \textit {Publish-Subscribe}\relax }}{34}{table.5.2}
+\contentsline {table}{\numberline {5.3}{\ignorespaces \textit {Server} Untuk Aplikasi dan API\relax }}{34}{table.5.3}
+\contentsline {table}{\numberline {5.4}{\ignorespaces \textit {Server} Untuk \textit {Database}\relax }}{35}{table.5.4}
+\contentsline {table}{\numberline {5.5}{\ignorespaces Komputer Penguji\relax }}{35}{table.5.5}
+\contentsline {table}{\numberline {5.6}{\ignorespaces Skenario Uji Pengguna Dapat Melihat Data Perangkat\relax }}{37}{table.5.6}
+\contentsline {table}{\numberline {5.7}{\ignorespaces Skenario Uji Pengguna Dapat Melihat Detail Data Perangkat\relax }}{37}{table.5.7}
+\contentsline {table}{\numberline {5.8}{\ignorespaces Skenario Uji Pengguna Dapat Mengubah Data Perangkat\relax }}{38}{table.5.8}
+\contentsline {table}{\numberline {5.9}{\ignorespaces Skenario Uji Pengguna Dapat Menghapus Data Perangkat\relax }}{38}{table.5.9}
+\contentsline {table}{\numberline {5.10}{\ignorespaces Skenario Uji Pengguna Dapat Melakukan \textit {Subscribe} pada Perangkat\relax }}{39}{table.5.10}
+\contentsline {table}{\numberline {5.11}{\ignorespaces Skenario Uji Pengguna Dapat Menghentikan \textit {Subscribe} (\textit {Unsubscribe}) pada Perangkat\relax }}{39}{table.5.11}
+\contentsline {table}{\numberline {5.12}{\ignorespaces Skenario Uji Pengguna Dapat Melakukan \textit {Monitoring} atau Pemantauan pada Perangkat yang Telah Di-\textit {Subscribe}\relax }}{40}{table.5.12}
+\contentsline {table}{\numberline {5.13}{\ignorespaces Hasil Uji Coba \textit {Client} dapat Mengakses Internet\relax }}{41}{table.5.13}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

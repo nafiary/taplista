@@ -1,0 +1,114 @@
+\chapter{PENDAHULUAN}
+Pada bab ini akan dijelaskan latar belakang, rumusan masalah, batasan masalah, tujuan, manfaat, metodologi dan sistematika penulisan Tugas Akhir.
+
+\section{Latar Belakang}
+\textit{Monitoring} adalah suatu kegiatan yang meliputi observasi dan pengecekan terhadap kemajuan suatu proses atau kualitas dari suatu barang atau pekerjaan dan dilakukan secara berkala. Banyak hal yang bisa dimonitor, mulai dari barang, kesehatan, hingga pekerjaan. Untuk keperluan Tugas Akhir ini, \textit{monitoring} dilakukan terhadap perangkat yang ada di Pusat Data Institut Teknologi Sepuluh Nopember (ITS) Surabaya, yakni server dan komputer \textit{single-board}. Tujuan dari adanya \textit{monitoring} ini adalah untuk memantau jaringan dan lingkungan di Pusat Data ITS.
+
+\textit{Monitoring} server adalah kegiatan memantau sebuah server dari segi kinerja perangkat keras, \textit{traffic} lalu lintas data, dan masih banyak lagi. \textit{Monitoring} server ini merupakan suatu pekerjaan yang sangat penting untuk dilakukan dalam memanajemen jaringan. \textit{Monitoring} ini menjadi suatu titik yang menentukan apakah suatu layanan jaringan sudah berjalan dengan baik atau tidak.
+
+Dalam suatu kegiatan \textit{monitoring} server, tidak semua pengguna layanan bisa melakukan hal tersebut karena terkait dengan hak akses masing-masing. Dan dalam pelaksanaannya selama ini, \textit{monitoring} server dilakukan secara manual dan tidak seragam. Hal ini yang menyebabkan administrator merasa kesulitan dalam mengatasi masalah jaringan yang terjadi.
+
+Selain itu, lingkungan di Pusat Data ITS juga perlu dipantau. Amat sulit rasanya jika administrator harus memantau dari komputer \textit{single-board} secara manual. Pekerjaan ini membutuhkan ekstra waktu. Dan belum tentu juga administrator langsung mengetahui jika ada server yang \textit{down} atau keadaan lain yang membutuhkan penanganan langsung.
+
+Berdasarkan uraian di atas maka dapat dilihat bahwa dibutuhkan sebuah sistem untuk menangani masalah \textit{monitoring} perangkat yang ada di Pusat Data ITS ini. Dengan adanya sistem yang seragam, diharapkan dapat membantu para administrator dalam memantau server dan komputer \textit{single-board} dengan lebih mudah dan efisien.
+
+
+\section{Rumusan Masalah}
+Rumusan masalah yang diangkat dalam Tugas Akhir ini adalah sebagai berikut:
+\begin{enumerate}
+	\item Bagaimana cara membangun sistem administrasi \textit{monitoring} untuk pemantauan server?
+	\item Bagaimana cara mengimplementasikan \textit{publish-subscribe} pada monitoring server?
+	\item Bagaimana cara membangun \textit{agent} yang melaporkan keadaan server ke pengguna?
+	\item Bagaimana cara mengambil informasi penggunaan CPU, memori, \textit{bandwidth}, dan hal-hal lain yang terkait pada server?
+	\item Bagaimana cara mengimplementasikan \textit{publish-subscribe} pada komputer papan tunggal (\textit{single board computer}) untuk pemantauan lingkungan Pusat Data ITS?
+	\item Bagaimana cara mengintegrasikan antara \textit{agent} ke Telegram untuk mengirim notifikasi mengenai keadaan lingkungan atau server di Pusat Data ITS yang membutuhkan penanganan langsung?
+\end{enumerate}
+
+\section{Batasan Masalah}
+Permasalahan yang dibahas pada Tugas Akhir ini memiliki beberapa batasan, yaitu sebagai berikut:
+
+\begin{enumerate}
+	\item Sistem hanya melakukan \textit{monitoring} pada Linux Server dan Raspberry Pi sebagai komputer \textit{single-board} untuk membaca sensor.
+	\item Sistem ini diimplementasikan di Pusat Data Institut Teknologi Sepuluh Nopember (ITS) Surabaya.
+\end{enumerate}
+
+\section{Tujuan}
+Tujuan dari Tugas Akhir ini adalah sebagai berikut:
+
+\begin{enumerate}
+	\item Membuat sebuah sistem \textit{monitoring} untuk perangkat di Pusat Data ITS berupa server dan komputer \textit{single-board} yang seragam untuk seluruh pengguna.
+	\item Mengimplementasikan metode \textit{publish-subscribe} pada sistem \textit{monitoring} server dan komputer \textit{single-board} di Pusat Data ITS.
+\end{enumerate}
+
+\section{Manfaat}
+Manfaat dari Tugas Akhir ini adalah sebagai berikut:
+
+\begin{enumerate}
+	\item Membangun sebuah sistem administrator \textit{monitoring} server dan komputer \textit{single-board} agar memudahkan para admin dalam memantau server yang ada.
+	\item Membangun sistem administrator untuk memantau lingkungan Pusat Data ITS dengan sensor yang dihubungkan ke Raspberry Pi.
+	\item Memonitoring server dan yang hanya ingin dimonitoring dengan cara memilih saluran server yang ada.
+	\item Membangun \textit{agent} dengan sistem \textit{publish-subscribe} agar dapat melaporkan keadaan server ke pengguna.
+	\item Membangun \textit{agent} untuk diletakkan di komputer \textit{single-board} agar bisa melaporkan keadaan lingkungan Pusat Data ITS ke pengguna dengan mengimplementasikan \textit{publish-subscribe}.
+	\item Mengetahui informasi seperti penggunaan CPU, memori, \textit{bandwidth}, dan hal lain yang terkait pada server dengan adanya sistem \textit{monitoring} server ini.
+	\item Memberitahu pengguna tentang keadaan server atau lingkungan Pusat Data ITS yang butuh perhatian langsung melalui aplikasi Telegram.
+\end{enumerate}
+
+\section{Metodologi}
+Metodologi yang digunakan pada pengerjaan Tugas Akhir ini
+adalah sebagai berikut:
+\subsection{Penyusunan Proposal Tugas Akhir}
+Tahap awal untuk memulai pengerjaan Tugas Akhir adalah penyusunan proposal Tugas Akhir yang berisi gagasan untuk menyelesaikan permasalahan di Pusat Data ITS Surabaya.
+
+Proposal tugas akhir ini berisi tentang deskripsi pendahuluan dari tugas akhir yang akan dibuat. Pendahuluan ini terdiri atas hal yang menjadi latar belakang diajukannya usulan tugas akhir, rumusan masalah yang diangkat, batasan masalah untuk tugas akhir, tujuan dari pembuatan tugas akhir, dan manfaat dari hasil pembuatan tugas akhir. Selain itu dijabarkan pula tinjauan pustaka yang digunakan sebagai referensi pendukung pembuatan tugas akhir. Sub bab metodologi berisi penjelasan mengenai tahapan penyusunan tugas akhir mulai dari penyusunan proposal hingga penyusunan buku tugas akhir. Terdapat pula sub bab jadwal kegiatan yang menjelaskan jadwal pengerjaan tugas akhir.
+\subsection{Studi literatur}
+Studi literatur merupakan langkah yang dilakukan untuk mendukung dan memastikan setiap tahap pengerjaan tugas akhir sesuai dengan standar dan konsep yang berlaku. Pada tahap studi literatur ini, akan dilakukan studi mendalam mengenai \textit{monitoring} server, Raspberry Pi, dan \textit{Publish-Subscribe}. Adapun literatur yang dijadikan sumber berasal dari paper, buku, materi perkuliahan, forum serta artikel dari internet.
+\subsection{Desain dan Perancangan Sistem}
+Pada tahap ini dilakukan desain dan perancangan sistem \textit{monitoring} perangkat di Pusat Data ITS Surabaya.
+
+Aktor dari aplikasi ini adalah administrator yang akan melakukan \textit{monitoring} server dan komputer \textit{single-board}. Admin memilih server atau perangkat mana yang ingin ia pantau. Dari permintaan tersebut, maka sistem akan memberikan informasi perangkat terpilih kepada pengguna yang memilih perangkat tersebut.
+
+Tahap ini merupakan tahap yang paling penting dimana bentuk awal aplikasi yang akan diimplementasikan didefinisikan. Pada tahapan ini dibuat desain dari arsitektur sistem.
+\subsection{Implementasi Sistem}
+Implementasi merupakan tahap membangun dan  mengimplementasikan rancangan sistem yang telah dibuat. Pada tahapan ini merealisasikan apa yang telah didesain dan dirancang pada tahapan sebelumnya, sehingga menjadi sebuah sistem yang sesuai dengan apa yang telah direncanakan.
+\subsection{Uji Coba dan Evaluasi}
+Pada tahapan ini dilakukan uji coba terhadap sistem yang telah dibuat. Pengujian dan evaluasi akan dilakukan dengan melihat kesesuaian dengan perencanaan. Selain itu, tahap ini juga akan melakukan uji performa sistem untuk mengetahui efisiensi penggunaan sumber daya serta evaluasi berdasarkan hasil uji performa tersebut.
+
+Pengujian dalam aplikasi ini akan dilakakukan dalam beberapa cara, antara lain:
+\begin{itemize}
+	\item Pengujian pada keberhasilan dalam mengambil informasi dari tiap-tiap server (\textit{monitoring} server).
+	\item Pengujian pada keberhasilan dalam pengambilan informasi dari komputer \textit{single-board} untuk memantau lingkungan Pusat Data ITS.
+	\item Pengujian ini berfokus pada ketepatan informasi dari hasil \textit{monitoring} perangkat dan diberikan (\textit{publish}) ke pengguna yang meminta (\textit{subscribe}).
+\end{itemize}
+\subsection{Penyusunan Buku Tugas Akhir} 
+Pada tahap ini dilakukan penyusunan buku Tugas Akhir yang berisi dokumentasi hasil pengerjaan Tugas Akhir.
+
+
+\section{Sistematika Penulisan}
+Berikut adalah sistematika penulisan buku Tugas Akhir ini:
+\begin{enumerate}
+	\item BABI: PENDAHULUAN
+	
+	Bab ini berisi latar belakang, rumusan masalah, batasan masalah, tujuan, manfaat, metodologi dan sistematika penulisan Tugas Akhir.
+	
+	\item BAB II: DASAR TEORI
+	
+	Bab ini berisi dasar teori mengenai permasalahan dan algoritma penyelesaian yang digunakan dalam Tugas Akhir
+	
+	\item BAB III: DESAIN
+	
+	Bab ini berisi desain algoritma dan struktur data yang digunakan dalam penyelesaian permasalahan.
+	
+	\item BAB IV: IMPLEMENTASI
+	
+	Bab ini berisi implementasi berdasarkan desain algortima yang telah dilakukan pada tahap desain.
+	
+	\item BAB V: UJI COBA DAN EVALUASI
+	
+	Bab ini berisi uji coba dan evaluasi dari hasil implementasi yang telah dilakukan pada tahap implementasi.
+	
+	\item BAB VI: PENUTUP
+	
+	Bab ini berisi kesimpulan dan saran yang didapat dari hasil uji coba yang telah dilakukan.
+\end{enumerate}
+
+\cleardoublepage

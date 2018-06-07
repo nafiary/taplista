@@ -1,0 +1,155 @@
+\chapter{IMPLEMENTASI}
+\label{chapter:implementasi}
+
+Pada bab ini dijelaskan mengenai implementasi \textit{publish-subscribe} pada rancang bangun sistem \textit{monitoring} perangkat di DPTSI ITS.
+
+\section{Lingkungan Implementasi}
+Lingkungan implementasi dalam pembuatan Tugas Akhir ini meliputi perangkat keras dan perangkat lunak yang digunakan untuk rancang bangun sistem \textit{monitoring} perangkat di DPTSI ITS dengan implementasi \textit{publish-subscribe} adalah sebagai berikut:
+
+\begin{enumerate}
+	\item Perangkat Keras:
+	\begin{itemize}
+		\item \textit{Processor} Intel(R) Core(TM) i5-4210U CPU @1.70GHz 64-bit dengan memori RAM 4 GB.
+	\end{itemize}
+	\item Perangkat Lunak:
+	\begin{itemize}
+		\item Sistem operasi Ubuntu 14.04 LTS 64 bit.
+		\item Rabbitmq, digunakan sebagai broker pada \textit{publish-subscribe}.
+		\item Flask, digunakan untuk membuat aplikasi sistem.
+		\item Nagios, digunakan untuk memantau server.
+		\item MySQL, digunakan untuk membangun \textit{database} pada sistem.
+		\item Telegram, digunakan sebagai media penerimaan notifikasi dari sistem.
+		\item \textit{Text editor} Sublime Text 3.
+		\item TeXstudio, digunakan untuk menyusun buku tugas akhir ini.
+		
+	\end{itemize}
+\end{numerate}
+	
+\section{Implementasi \textit{Publisher Server}}
+	\textit{Publisher server} merupakan \textit{server} yang berfungsi untuk mengambil data pada perangkat (\textit{server}) dan mengirimkannya menuju \textit{publish-subscribe server}. \textit{Publisher server} menggunakan \textit{plugin} NRPE sebagai tambahan pada Nagios untuk memantau sumber daya "lokal" (seperti beban CPU, penggunaan memori, dan sebagainya). Untuk itu kita perlu memasang Nagios terlebih dahulu pada \textit{server} agar bisa melakukan pengambilan data pemantauan \textit{server}. 
+	
+	Setelah data berhasil dikumpulkan, data hasil pemantauan pada tiap \textit{server} dikirimkan menuju \textit{publish-subscribe server} melalui \textit{thread} yang berbeda. Proses ini dinamakan \textit{multithreading}.
+	
+	\subsection{Instalasi Nagios pada \textit{Server}}
+	Instalasi dilakukan dengan mengunduh Nagios terlebih dahulu pada laman di bawah ini
+	\url{https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.3.4.tar.gz}.
+	Setelah itu, dilakukan prosedur penginstalan Nagios di \textit{server}.
+	
+	\subsection{\textit{Script} NRPE untuk Pengambilan Data}
+	Kode Sumber \ref{nrpe} ini menunjukkan \textit{script} dari \textit{[plugin]} NRPE untuk megambil data dari hasil pemantauan oleh Nagios.
+	
+\begin{lstlisting}[frame=single,breaklines,caption={Perintah Mengumpulkan Data Perangkat dengan NRPE},label=nrpe, captionpos=b]
+$ /usr/local/nagios/libexec/check_nrpe -H <alamat_server> -c <nama_service> ['nama_command']
+\end{lstlisting} 
+	
+	
+	\section{Implementasi \textit{Publish-Subscribe Server}}
+	Pada \textit{publish-subscribe server}, dipasang aplikasi RabbitMQ. RabbitMQ menerima seluruh data yang dikirim oleh \textit{publisher}. Setelah itu, RabbitMQ
+	menyimpan dan menunggu hingga ada konsumen yang
+	meminta data tersebut pada RabbitMQ . Data yang dikirimkan harus sesuai dengan apa yang diminta oleh konsumen, tidak boleh berbeda dari kriteria yang diminta. 
+	
+	Instalasi RabbitMQ dapat dilihat melalui halaman web resminya, \url{https://www.rabbitmq.com/install-debian.html}. Langkah instalasi diawali dengan penginstalan erlang, sebuah bahasa pemrograman yang dibutuhkan untuk menjalankan RabbitMQ. Setelah itu barulah dipasang \texttt{rabbitmq-server}. 
+	
+	Setelah RabbitMQ \textit{server} terpasang, selanjutnya dilakukan konfigurasi untuk mengaktifkan akses ke RabbitMQ Management Console, web admin milik RabbitMQ. Hal ini dilakukan agar mudah untuk melakukan manajemen data, \textit{user}, dan lain-lain. RabbitMQ sudah menyediakan \textit{plugin} agar web admin dapat langsung digunakan. Hanya dengan menjalankan perintah \texttt{sudo rabbitmq-plugins enable rabbitmq\_management}, web admin RabbitMQ dapat dijalankan. 
+	
+	\section{Implementasi \textit{Webserver}}
+	Pada \textit{webserver}, terdapat \textit{application server} dan \textit{websocket.} \textit{Websocket} berfungsi untuk meminta data dari \textit{publish-subscribe server}. Websocket disambungkan dengan suatu \textit{endpoint} pada \textit{application server}, sehingga ketika klien mengakses \textit{endpoint} pada aplikasi, \texttt{javascript} pada halaman tersebut akan menyambungkan ke halaman pada \textit{websocket}.
+	
+	\textit{Websocket} pada sistem ini menggunakan node.js, sebuah perangkat lunak yang didesain untuk mengembangkan aplikasi berbasis web. Node.js menggunakan bahasa pemrograman JavaScript.\\
+	
+	\begin{lstlisting}[frame=single,caption={Inisiasi Komunikasi Websocket dengan Klien dan Publish-Subscribe Server Tidak Terkonesi}, breaklines=true,label=pseudo:notconn, language=python]
+	socket.on('disconnect', function() {
+	$("#idlogs").text("Disconnect");
+	$("#idlogs").parent().parent().attr('class', 'block-content block-content-full bg-danger');
+	$('.nrperesult').each(function() {
+	$(this).html("")
+	});
+	});
+	\end{lstlisting}
+	
+	Kode Sumber \ref{pseudo:notconn} menunjukkan jika kondisi komunikasi antara \textit{websocket} dengan klien dan \textit{publish-subscribe server} tidak tersambung.
+	
+	\begin{lstlisting}[frame=single,caption={Inisiasi Komunikasi Websocket dengan Klien dan Publish-Subscribe Server Terkoneksi}, breaklines=true,label=pseudo:conn, language=python]
+	socket.on('connect', function() {
+	$("#idlogs").text("Connected");
+	$("#idlogs").parent().parent().attr('class', 'block-content block-content-full bg-success');
+	{% if monitor.subscribing %}
+	var deviceid = [];
+	$('.device').each(function( index ) {
+	deviceid.push($( this ).attr('id'));
+	});
+	socket.emit('startRabbit', {'data': deviceid, 'id': uuid4() });
+	{% endif %}
+	});
+	\end{lstlisting}
+	
+	Kode Sumber \ref{pseudo:conn} menunjukkan jika kondisi komunikasi antara \textit{websocket} dengan klien dan \textit{publish-subscribe server} telah tersambung. Kemudian, klien mengirimkan ID dari perangkat (\textit{server}) yang telah dipilih oleh pengguna untuk menjadikannya nama \textit{exchange}. UUID versi 4 dibuat untuk menamai \textit{queue} yang baru. 
+	
+	Jika koneksi sudah tersambung dan ID perangkat untuk penamaan \textit{exchange} serta UUID versi 4 untuk penamaan \textit{queue} sudah dikirim oleh klien, maka selanjutnya \textit{server} akan memproses pembuatan \textit{exchange} dan \textit{queue} baru. Kode \textit{websocket server} saat pembuatan
+	\textit{exchange} dan \textit{queue} lalu menyalurkan data pada klien dapat dilihat pada Kode Sumber \ref{pseudo:buatbaru}
+	
+\begin{lstlisting}[frame=single,caption={Pembuatan Exchange dan Queue Baru pada Websocket}, breaklines=true,label=pseudo:buatbaru, language=python]
+rabbitMqConnection.createChannel().then(function(ch) {
+consumerChannel = ch
+var q;
+function allDone(notAborted, arr) {
+var okok = ch.prefetch(1)
+okok = okok.then(() => {
+return ch.consume(q, logMessage, {noAck: true}) 
+.then(() => {
+console.log(' [*] Waiting for '+msg['data']+'.');
+})
+})
+}
+forEach(msg['data'], function (item, index, arr) {
+var done = this.async()
+var ok = ch.assertExchange(item, 'fanout', {durable: false});
+ok = ok.then(function() {
+return ch.assertQueue(msg['id'], {exclusive: false});
+});
+ok = ok.then(function(qok) {
+return ch.bindQueue(qok.queue, item, '').then(function() {
+q = qok.queue
+return qok.queue;
+});
+});
+ok = ok.then(function() {
+done()
+})
+}, allDone)
+\end{lstlisting}
+	
+	\section{Implementasi REST API}
+	Fungsi utama dari REST API untuk sistem ini adalah untuk menyimpan data pengguna yang melakukan \textit{subscribe} pada perangkat beserta \textit{service}-nya. REST API dibuat dengan menggunakan \textit{framework} Flask dan ORM Database peewee.
+	
+	REST API menggunakan protokol HTTP dalam pengaksesannya. Sehingga, terdapat URL API yang dapat disebut sebagai \textit{endpoint}. Tabel \ref{tab:endpoint} akan menguraikan ada \textit{endpoint} apa saja pada REST API di sistem ini. 
+	
+	\begin{longtable}{|p{0.05\textwidth}|p{0.40\textwidth}|p{0.13\textwidth}|p{0.25\textwidth}|} % L = Rata kiri untuk setiap kolom, | = garis batas vertikal.
+		
+		% Kepala tabel, berulang di setiap halaman
+		\caption{Daftar Endpoint pada REST API} \label{tab:endpoint} \\
+		\hline
+		\textbf{No} & \textbf{\textit{Endpoint}} & \textbf{Metode} & \textbf{Aksi} \\ \hline
+		\endhead
+		\endfoot
+		\endlastfoot
+		1 & /register & POST & Membuat data baru pada tabel user di database \\ \hline
+		2 & /login & POST & Mengambil data pada tabel user dan mencocokkannya dengan JSON yang dikirimkan lewat \textit{body}. setelah data username dan password cocok, lalu dibuatkan sebuah token JWT. \\ \hline
+		3 & /logout & POST & Memasukkan token JWT yang terdaftar pada server kedalam daftar hitam agar token tidak dapat digunakan lagi. \\ \hline
+		4 & /users & GET & Menampilkan seluruh data user yang terdaftar pada sistem \\ \hline
+		5 & /users/\textless{}string:username\textgreater{} & GET & Menampilkan data user berdasarkan username yang tertulis pada URL \\ \hline
+		6 & /devices/create & POST & Membuat data baru pada tabel devices di database \\ \hline
+		7 & /devices/edit/\textless{}string:id\textgreater{} & PUT & Mengubah data pada tabel devices di database yang ID nya sama dengan ID yang ada pada URL. \\ \hline
+		8 & /devices/delete & DELETE & Menghapus data pada tabel devices di database yang ID nya tertulis pada \textit{body} yang bertipe JSON. \\ \hline
+		9 & /devices & GET & Menampilkan seluruh data perangkat yang terdaftar pada sistem \\ \hline
+		10 & /devices/\textless{}string:id\textgreater{} & GET & Menampilkan data user berdasarkan username yang tertulis pada URL \\ \hline
+		11 & /service/create & POST & Membuat data baru pada tabel service \\ \hline
+		12 & /service/edit & POST & Mengubah data pada tabel service di database yang ID nya tertulis pada \textit{body} yang bertipe JSON. \\ \hline
+		13 & /service/delete & POST & Menghapus data pada tabel service di database yang ID nya tertulis pada \textit{body} yang bertipe JSON. \\ \hline
+		14 & /subscribe/devices & POST & Membuat data baru pada tabel subscribe \\ \hline
+		15 & /unsubscribe/devices & POST & Menghapus data pada tabel subscribe di database yang ID nya tertulis pada \textit{body} yang bertipe JSON. \\ \hline
+		16 & /subscribe/service & POST & Membuat data baru pada tabel servicesubscribed \\ \hline
+		17 & /unsubscribe/service & POST & Menghapus data pada tabel servicesubscribed di database yang ID nya tertulis pada \textit{body} yang bertipe JSON. \\ \hline	
+	\end{longtable}
+	
+
